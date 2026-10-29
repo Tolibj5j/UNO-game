@@ -46,9 +46,26 @@ document.querySelectorAll('.tab').forEach((tab) => {
 });
 function selectTab(name) {
   document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelector('.tabs').classList.toggle('join', name === 'join');
   $('createForm').classList.toggle('hidden', name !== 'create');
   $('joinForm').classList.toggle('hidden', name !== 'join');
+  showError('homeError', '');
 }
+
+// Parolni ko'rsatish / yashirish
+document.querySelectorAll('.eye').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const input = btn.parentElement.querySelector('input');
+    const visible = input.type === 'text';
+    input.type = visible ? 'password' : 'text';
+    btn.classList.toggle('on', !visible);
+  });
+});
+
+// Xona kodini avtomatik katta harfga o'tkazish
+$('joinForm').code.addEventListener('input', (e) => {
+  e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+});
 
 const savedName = localStorage.getItem('uno:name') || '';
 $('createForm').name.value = savedName;

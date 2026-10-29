@@ -9,8 +9,6 @@ body {
 }
 .hidden { display: none !important; }
 .screen { max-width: 960px; margin: 0 auto; padding: 20px 14px 40px; text-align: center; }
-.logo { font-size: 64px; margin: 20px 0 0; color: var(--yellow); text-shadow: 4px 4px 0 var(--red); font-weight: 900; }
-.logo span { font-size: 24px; color: #fff; text-shadow: none; }
 .subtitle, .muted { color: #cfd8dc; }
 .panel { background: var(--panel); border-radius: 14px; padding: 16px; margin: 14px auto; max-width: 420px; text-align: left; }
 label { display: block; margin-bottom: 12px; font-size: 14px; color: #cfd8dc; }
@@ -22,9 +20,6 @@ input { width: 100%; margin-top: 4px; padding: 10px 12px; font-size: 16px; borde
 .btn.ghost { background: transparent; color: #cfd8dc; border: 1px solid #cfd8dc55; margin-top: 18px; }
 .btn.uno { background: var(--red); color: #fff; font-size: 20px; font-weight: 900; }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
-.tabs { display: flex; gap: 8px; justify-content: center; margin-top: 20px; }
-.tab { padding: 10px 16px; border-radius: 10px; border: none; background: var(--panel); color: #fff; cursor: pointer; font-size: 15px; }
-.tab.active { background: #fff; color: #222; font-weight: 700; }
 .error { color: #ff8a80; min-height: 20px; font-weight: 600; }
 .code { letter-spacing: 4px; color: var(--yellow); }
 .copy-row { display: flex; gap: 8px; }
@@ -102,4 +97,134 @@ input { width: 100%; margin-top: 4px; padding: 10px 12px; font-size: 16px; borde
   .opponent { min-width: 0; width: calc(33.333% - 6px); padding: 6px; font-size: 13px; }
   .opponent .cards { height: 24px; }
   .mini-card { width: 15px; height: 22px; margin-left: -9px; }
+}
+
+/* =========================================================
+   Kirish sahifasi (yangi dizayn)
+   ========================================================= */
+#home {
+  max-width: none; min-height: 100vh; padding: 24px 16px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(229,57,53,.35), transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(30,136,229,.35), transparent 40%),
+    radial-gradient(circle at 20% 85%, rgba(67,160,71,.35), transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(251,192,45,.30), transparent 40%),
+    linear-gradient(160deg, #0d1b2a, #1b1035 60%, #0d1b2a);
+}
+
+/* Suzib yuruvchi kartalar */
+.float-cards { position: absolute; inset: 0; pointer-events: none; }
+.fc { position: absolute; opacity: .55; filter: blur(.4px); animation: floaty 9s ease-in-out infinite; }
+.fc:nth-child(1) { top: 8%;  left: 6%;  --r: -18deg; animation-delay: 0s; }
+.fc:nth-child(2) { top: 14%; right: 8%; --r: 16deg;  animation-delay: -2s; }
+.fc:nth-child(3) { bottom: 12%; left: 10%; --r: 12deg; animation-delay: -4s; }
+.fc:nth-child(4) { bottom: 8%; right: 12%; --r: -14deg; animation-delay: -6s; }
+.fc:nth-child(5) { top: 45%; left: 2%; --r: 24deg; animation-delay: -3s; }
+.fc:nth-child(6) { top: 50%; right: 3%; --r: -24deg; animation-delay: -5s; }
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(var(--r)); }
+  50% { transform: translateY(-22px) rotate(calc(var(--r) * -1)); }
+}
+
+.home-wrap {
+  position: relative; z-index: 1; width: 100%; max-width: 980px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+}
+
+/* Chap tomon: logotip */
+.hero { text-align: left; }
+.logo-card {
+  width: 220px; height: 150px; border-radius: 50%; background: var(--red);
+  border: 8px solid #fff; transform: rotate(-12deg);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 20px 50px rgba(229,57,53,.45), 0 0 0 6px #000 inset;
+  animation: pop .7s cubic-bezier(.2,1.6,.4,1) both;
+}
+.logo-card span {
+  font-size: 76px; font-weight: 900; font-style: italic; letter-spacing: -2px; color: var(--yellow);
+  text-shadow: 4px 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+}
+@keyframes pop { from { transform: rotate(-12deg) scale(.3); opacity: 0; } to { transform: rotate(-12deg) scale(1); opacity: 1; } }
+.tagline { font-size: 26px; font-weight: 800; margin: 34px 0 16px; line-height: 1.25; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 7px 12px; border-radius: 999px; font-size: 14px; color: #e3e8ef;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+}
+
+/* O'ng tomon: forma kartasi */
+.auth-card {
+  text-align: left; padding: 26px; border-radius: 22px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 30px 60px rgba(0,0,0,.45);
+  animation: rise .6s ease both .15s;
+}
+@keyframes rise { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.tabs {
+  position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 5px;
+  background: rgba(0,0,0,.35); border-radius: 14px; margin-bottom: 18px;
+}
+.tab {
+  position: relative; z-index: 1; padding: 11px 8px; border: none; background: none;
+  color: #b8c2d0; font-size: 15px; font-weight: 700; cursor: pointer; border-radius: 10px; transition: color .25s;
+}
+.tab.active { color: #1b1035; }
+.tab-slider {
+  position: absolute; top: 5px; bottom: 5px; left: 5px; width: calc(50% - 5px); border-radius: 10px;
+  background: linear-gradient(135deg, #ffd54f, #fbc02d); box-shadow: 0 4px 14px rgba(251,192,45,.4);
+  transition: transform .3s cubic-bezier(.4,1.4,.5,1);
+}
+.tabs.join .tab-slider { transform: translateX(100%); }
+
+.auth-form { animation: fadeIn .3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.form-hint { margin: 0 0 16px; color: #b8c2d0; font-size: 14px; }
+
+.field { display: block; margin-bottom: 14px; }
+.field-label { display: block; font-size: 13px; font-weight: 600; color: #cfd8e3; margin-bottom: 6px; }
+.field-box {
+  display: flex; align-items: center; gap: 8px; padding: 0 12px; border-radius: 12px;
+  background: rgba(255,255,255,.95); border: 2px solid transparent; transition: border-color .2s, box-shadow .2s;
+}
+.field-box:focus-within { border-color: var(--yellow); box-shadow: 0 0 0 4px rgba(251,192,45,.25); }
+.field-box i { display: flex; color: #7a8294; }
+.field-box:focus-within i { color: #e53935; }
+.field-box svg, .eye svg { width: 20px; height: 20px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; }
+.chip svg { width: 16px; height: 16px; color: var(--yellow); }
+.tab { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.tab svg { width: 17px; height: 17px; }
+.field-box input { margin: 0; padding: 13px 0; border: none; outline: none; background: transparent; color: #1b1035; font-size: 16px; }
+.field-box input::placeholder { color: #9aa3b2; }
+.code-input { text-transform: uppercase; letter-spacing: 6px; font-weight: 800; }
+.code-input::placeholder { letter-spacing: 6px; font-weight: 600; }
+.eye { display: flex; border: none; background: none; cursor: pointer; color: #7a8294; padding: 4px; }
+.eye.on { color: #e53935; }
+
+.big-btn {
+  width: 100%; margin-top: 6px; padding: 15px; font-size: 17px; font-weight: 800; border-radius: 12px;
+  background: linear-gradient(135deg, #ff5252, #e53935); color: #fff;
+  box-shadow: 0 10px 24px rgba(229,57,53,.45); transition: transform .15s, box-shadow .15s;
+}
+.big-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(229,57,53,.55); filter: none; }
+.big-btn:active { transform: translateY(0); }
+.big-btn:disabled { opacity: .7; transform: none; }
+#homeError { margin: 12px 0 0; text-align: center; }
+
+@media (max-width: 760px) {
+  .home-wrap { grid-template-columns: 1fr; gap: 26px; }
+  .hero { text-align: center; }
+  .logo-card { width: 160px; height: 110px; margin: 10px auto 0; border-width: 6px; }
+  .logo-card span { font-size: 54px; }
+  .tagline { font-size: 20px; margin: 22px 0 12px; }
+  .chips { justify-content: center; }
+  .chip { font-size: 12px; padding: 6px 10px; }
+  .auth-card { padding: 20px; }
+  .fc { opacity: .3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fc, .logo-card, .auth-card, .auth-form { animation: none; }
 }
