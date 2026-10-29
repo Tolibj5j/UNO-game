@@ -1,0 +1,100 @@
+* { box-sizing: border-box; }
+:root {
+  --red: #e53935; --yellow: #fbc02d; --green: #43a047; --blue: #1e88e5;
+  --bg: #12372a; --panel: rgba(255,255,255,0.08);
+}
+body {
+  margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(circle at top, #1f5c43, var(--bg)); color: #fff;
+}
+.hidden { display: none !important; }
+.screen { max-width: 960px; margin: 0 auto; padding: 20px 14px 40px; text-align: center; }
+.logo { font-size: 64px; margin: 20px 0 0; color: var(--yellow); text-shadow: 4px 4px 0 var(--red); font-weight: 900; }
+.logo span { font-size: 24px; color: #fff; text-shadow: none; }
+.subtitle, .muted { color: #cfd8dc; }
+.panel { background: var(--panel); border-radius: 14px; padding: 16px; margin: 14px auto; max-width: 420px; text-align: left; }
+label { display: block; margin-bottom: 12px; font-size: 14px; color: #cfd8dc; }
+input { width: 100%; margin-top: 4px; padding: 10px 12px; font-size: 16px; border-radius: 8px; border: none; }
+.btn { padding: 10px 18px; font-size: 16px; border: none; border-radius: 10px; cursor: pointer; background: #eceff1; color: #222; font-weight: 600; }
+.btn:hover { filter: brightness(0.95); }
+.btn.primary { background: var(--yellow); color: #222; width: 100%; }
+.btn.big { max-width: 420px; padding: 14px; font-size: 18px; }
+.btn.ghost { background: transparent; color: #cfd8dc; border: 1px solid #cfd8dc55; margin-top: 18px; }
+.btn.uno { background: var(--red); color: #fff; font-size: 20px; font-weight: 900; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.tabs { display: flex; gap: 8px; justify-content: center; margin-top: 20px; }
+.tab { padding: 10px 16px; border-radius: 10px; border: none; background: var(--panel); color: #fff; cursor: pointer; font-size: 15px; }
+.tab.active { background: #fff; color: #222; font-weight: 700; }
+.error { color: #ff8a80; min-height: 20px; font-weight: 600; }
+.code { letter-spacing: 4px; color: var(--yellow); }
+.copy-row { display: flex; gap: 8px; }
+.copy-row input { margin: 0; font-size: 14px; }
+.player-list { list-style: none; padding: 0; margin: 0; }
+.player-list li { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-radius: 8px; background: rgba(0,0,0,.2); margin-bottom: 6px; }
+.player-list .kick { background: transparent; border: none; color: #ff8a80; cursor: pointer; font-size: 14px; }
+.badge { font-size: 12px; background: var(--yellow); color: #222; border-radius: 6px; padding: 2px 6px; margin-left: 6px; }
+.offline { opacity: .5; }
+
+/* Raqiblar */
+.opponents { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.opponent { background: var(--panel); border-radius: 12px; padding: 10px 14px; min-width: 120px; border: 3px solid transparent; }
+.opponent.turn { border-color: var(--yellow); box-shadow: 0 0 14px var(--yellow); }
+.opponent .name { font-weight: 700; }
+.opponent .cards { display: flex; justify-content: center; margin: 6px 0; height: 34px; }
+.mini-card { width: 22px; height: 32px; border-radius: 4px; background: #222; border: 2px solid #fff; margin-left: -12px; }
+.mini-card:first-child { margin-left: 0; }
+.uno-tag { color: var(--yellow); font-weight: 900; }
+.catch-btn { background: var(--red); color: #fff; border: none; border-radius: 6px; padding: 4px 8px; cursor: pointer; font-weight: 700; margin-top: 4px; }
+
+/* Stol */
+.table { display: flex; justify-content: center; align-items: center; gap: 30px; margin: 24px 0 8px; }
+.pile { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.direction { font-size: 36px; }
+.turn-info { font-size: 18px; font-weight: 700; min-height: 24px; }
+.actions { display: flex; gap: 10px; justify-content: center; }
+
+/* Kartalar */
+.card {
+  width: 70px; height: 105px; border-radius: 10px; border: 4px solid #fff; position: relative;
+  display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 26px;
+  color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,.35); user-select: none; flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(0,0,0,.4);
+}
+.card::before { content: ''; position: absolute; inset: 10px 6px; border-radius: 50%; background: rgba(255,255,255,.2); transform: rotate(-30deg); }
+.card span { position: relative; }
+.card.small-text span { font-size: 15px; }
+.card.red { background: var(--red); } .card.yellow { background: var(--yellow); }
+.card.green { background: var(--green); } .card.blue { background: var(--blue); }
+.card.wild { background: conic-gradient(var(--red) 0 25%, var(--yellow) 0 50%, var(--green) 0 75%, var(--blue) 0); }
+.card.back { background: #222; cursor: pointer; color: var(--yellow); font-size: 20px; }
+.card.back.active { box-shadow: 0 0 16px var(--yellow); }
+#discard .card { width: 84px; height: 126px; font-size: 32px; }
+
+.hand { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 18px; padding: 10px; }
+.hand .card { cursor: default; transition: transform .15s; }
+.hand .card.playable { cursor: pointer; }
+.hand .card.playable:hover { transform: translateY(-12px); }
+.hand.my-turn .card:not(.playable) { opacity: .45; }
+
+.color-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: middle; margin-left: 4px; border: 2px solid #fff; }
+
+/* Modal */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: flex; align-items: center; justify-content: center; z-index: 10; }
+.modal-box { background: #1f3b31; padding: 24px; border-radius: 16px; text-align: center; min-width: 280px; }
+.modal-box .btn { margin: 6px; }
+.colors { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+.color-btn { width: 90px; height: 90px; border-radius: 14px; border: 3px solid #fff; cursor: pointer; }
+.color-btn.red { background: var(--red); } .color-btn.yellow { background: var(--yellow); }
+.color-btn.green { background: var(--green); } .color-btn.blue { background: var(--blue); }
+
+.log-box { max-width: 420px; margin: 16px auto 0; text-align: left; background: var(--panel); border-radius: 10px; padding: 8px 14px; }
+.log-box ul { padding-left: 18px; max-height: 200px; overflow-y: auto; font-size: 14px; color: #cfd8dc; }
+
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #000c; padding: 10px 18px; border-radius: 10px; z-index: 20; }
+
+@media (max-width: 600px) {
+  .card { width: 54px; height: 81px; font-size: 20px; border-width: 3px; }
+  .card.small-text span { font-size: 12px; }
+  #discard .card { width: 70px; height: 105px; font-size: 26px; }
+  .hand { gap: 4px; }
+}

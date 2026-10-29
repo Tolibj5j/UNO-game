@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNO Onlayn</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Bosh sahifa -->
+  <section id="home" class="screen">
+    <h1 class="logo">UNO <span>onlayn</span></h1>
+    <p class="subtitle">Do'stlaringiz bilan 2–6 kishi bo'lib o'ynang</p>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="create">Xona yaratish</button>
+      <button class="tab" data-tab="join">Xonaga kirish</button>
+    </div>
+
+    <form id="createForm" class="panel">
+      <label>Ismingiz<input name="name" maxlength="16" required autocomplete="nickname" /></label>
+      <label>Xona paroli<input name="password" maxlength="32" minlength="3" required /></label>
+      <button type="submit" class="btn primary">Xona yaratish</button>
+    </form>
+
+    <form id="joinForm" class="panel hidden">
+      <label>Xona kodi<input name="code" maxlength="6" required style="text-transform:uppercase" /></label>
+      <label>Ismingiz<input name="name" maxlength="16" required autocomplete="nickname" /></label>
+      <label>Parol<input name="password" type="password" maxlength="32" required /></label>
+      <button type="submit" class="btn primary">Kirish</button>
+    </form>
+    <p id="homeError" class="error"></p>
+  </section>
+
+  <!-- Kutish xonasi -->
+  <section id="lobby" class="screen hidden">
+    <h2>Xona: <span id="lobbyCode" class="code"></span></h2>
+    <div class="panel share">
+      <p>Do'stlaringizga havola va parolni yuboring:</p>
+      <div class="copy-row">
+        <input id="shareLink" readonly />
+        <button id="copyLink" class="btn">Nusxa olish</button>
+      </div>
+      <p id="hostPassword" class="muted"></p>
+    </div>
+    <div class="panel">
+      <h3>O'yinchilar (<span id="playerCount">0</span>/6)</h3>
+      <ul id="lobbyPlayers" class="player-list"></ul>
+    </div>
+    <button id="startBtn" class="btn primary big hidden">O'yinni boshlash</button>
+    <p id="waitHost" class="muted hidden">Xona egasi o'yinni boshlashini kuting...</p>
+    <p id="lobbyError" class="error"></p>
+    <button class="btn ghost leave-btn">Xonadan chiqish</button>
+  </section>
+
+  <!-- O'yin -->
+  <section id="game" class="screen hidden">
+    <div id="opponents" class="opponents"></div>
+
+    <div class="table">
+      <div class="pile">
+        <div id="deck" class="card back" title="Karta olish"><span>UNO</span></div>
+        <small id="deckCount"></small>
+      </div>
+      <div class="pile">
+        <div id="discard"></div>
+        <small id="colorInfo"></small>
+      </div>
+      <div id="direction" class="direction"></div>
+    </div>
+
+    <p id="turnInfo" class="turn-info"></p>
+
+    <div class="actions">
+      <button id="unoBtn" class="btn uno">UNO!</button>
+      <button id="passBtn" class="btn hidden">O'tkazish</button>
+    </div>
+    <p id="gameError" class="error"></p>
+
+    <div id="hand" class="hand"></div>
+
+    <details class="log-box">
+      <summary>O'yin jurnali</summary>
+      <ul id="log"></ul>
+    </details>
+    <button class="btn ghost leave-btn">Xonadan chiqish</button>
+  </section>
+
+  <!-- Rang tanlash oynasi -->
+  <div id="colorPicker" class="modal hidden">
+    <div class="modal-box">
+      <h3>Rangni tanlang</h3>
+      <div class="colors">
+        <button class="color-btn red" data-color="red"></button>
+        <button class="color-btn yellow" data-color="yellow"></button>
+        <button class="color-btn green" data-color="green"></button>
+        <button class="color-btn blue" data-color="blue"></button>
+      </div>
+      <button id="cancelColor" class="btn ghost">Bekor qilish</button>
+    </div>
+  </div>
+
+  <!-- G'olib oynasi -->
+  <div id="winner" class="modal hidden">
+    <div class="modal-box">
+      <h2 id="winnerText"></h2>
+      <button id="againBtn" class="btn primary hidden">Yana o'ynash</button>
+      <button id="lobbyBtn" class="btn hidden">Kutish xonasiga qaytish</button>
+      <p id="waitAgain" class="muted hidden">Xona egasi yangi o'yinni boshlashini kuting...</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
