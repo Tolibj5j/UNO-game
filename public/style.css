@@ -228,3 +228,8 @@ input { width: 100%; margin-top: 4px; padding: 10px 12px; font-size: 16px; borde
 @media (prefers-reduced-motion: reduce) {
   .fc, .logo-card, .auth-card, .auth-form { animation: none; }
 }
+
+/* Parolni nuqtalar bilan yashirish (type="password"siz, parol menejer aralashmasligi uchun) */
+.pw-input { -webkit-text-security: disc; text-security: disc; }
+.pw-input.pw-shown { -webkit-text-security: none; text-security: none; }
+.pw-input:placeholder-shown { -webkit-text-security: none; }

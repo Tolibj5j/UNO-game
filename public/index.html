@@ -37,32 +37,32 @@
           <span class="tab-slider"></span>
         </div>
 
-        <form id="createForm" class="auth-form">
+        <form id="createForm" class="auth-form" autocomplete="off">
           <p class="form-hint">Yangi xona oching va havolani do'stlaringizga yuboring.</p>
           <label class="field">
             <span class="field-label">Ismingiz</span>
-            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></i><input name="name" maxlength="16" required autocomplete="nickname" placeholder="Masalan: 315-DI" /></span>
+            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></i><input name="name" maxlength="16" required autocomplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" placeholder="Masalan: 315-DI" /></span>
           </label>
           <label class="field">
             <span class="field-label">Xona paroli</span>
-            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></i><input name="password" type="password" maxlength="32" minlength="3" required placeholder="Kamida 3 ta belgi" autocomplete="new-password" /><button type="button" class="eye" aria-label="Parolni ko'rsatish"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
+            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></i><input name="password" type="text" class="pw-input" maxlength="32" minlength="3" required placeholder="Kamida 3 ta belgi" autocomplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" /><button type="button" class="eye" aria-label="Parolni ko'rsatish"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
           </label>
           <button type="submit" class="btn big-btn">Xona yaratish</button>
         </form>
 
-        <form id="joinForm" class="auth-form hidden">
+        <form id="joinForm" class="auth-form hidden" autocomplete="off">
           <p class="form-hint">Do'stingiz yuborgan xona kodi va parolni kiriting.</p>
           <label class="field">
             <span class="field-label">Xona kodi</span>
-            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h14M5 15h14M10 3 8 21M16 3l-2 18"/></svg></i><input name="code" class="code-input" maxlength="6" required placeholder="ABC123" autocomplete="off" /></span>
+            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h14M5 15h14M10 3 8 21M16 3l-2 18"/></svg></i><input name="code" class="code-input" maxlength="6" required placeholder="ABC123" autocomplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" /></span>
           </label>
           <label class="field">
             <span class="field-label">Ismingiz</span>
-            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></i><input name="name" maxlength="16" required autocomplete="nickname" placeholder="Masalan: Vali" /></span>
+            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></i><input name="name" maxlength="16" required autocomplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" placeholder="Masalan: Vali" /></span>
           </label>
           <label class="field">
             <span class="field-label">Parol</span>
-            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></i><input name="password" type="password" maxlength="32" required placeholder="Xona paroli" autocomplete="current-password" /><button type="button" class="eye" aria-label="Parolni ko'rsatish"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
+            <span class="field-box"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></i><input name="password" type="text" class="pw-input" maxlength="32" required placeholder="Xona paroli" autocomplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" /><button type="button" class="eye" aria-label="Parolni ko'rsatish"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
           </label>
           <button type="submit" class="btn big-btn">Kirish</button>
         </form>

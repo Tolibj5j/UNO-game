@@ -55,10 +55,10 @@ function selectTab(name) {
 // Parolni ko'rsatish / yashirish
 document.querySelectorAll('.eye').forEach((btn) => {
   btn.addEventListener('click', () => {
+    // type="password" ishlatmaymiz, aks holda brauzer parol saqlash/taklif qilishni boshlaydi
     const input = btn.parentElement.querySelector('input');
-    const visible = input.type === 'text';
-    input.type = visible ? 'password' : 'text';
-    btn.classList.toggle('on', !visible);
+    const shown = input.classList.toggle('pw-shown');
+    btn.classList.toggle('on', shown);
   });
 });
 
@@ -67,16 +67,14 @@ $('joinForm').code.addEventListener('input', (e) => {
   e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
 });
 
-const savedName = localStorage.getItem('uno:name') || '';
-$('createForm').name.value = savedName;
-$('joinForm').name.value = savedName;
+// Avvalgi versiyada saqlangan ismni o'chiramiz, maydonlar bo'sh ochilsin
+localStorage.removeItem('uno:name');
 
 $('createForm').addEventListener('submit', (e) => {
   e.preventDefault();
   const f = e.target;
   const name = f.name.value.trim();
   const password = f.password.value;
-  localStorage.setItem('uno:name', name);
   socket.emit('createRoom', { name, password }, (res) => {
     if (!res.ok) return showError('homeError', res.error);
     sessionStorage.setItem(`uno:pw:${res.code}`, password);
@@ -89,7 +87,6 @@ $('joinForm').addEventListener('submit', (e) => {
   const f = e.target;
   const code = f.code.value.trim().toUpperCase();
   const name = f.name.value.trim();
-  localStorage.setItem('uno:name', name);
   socket.emit(
     'joinRoom',
     { code, name, password: f.password.value, token: localStorage.getItem(tokenKey(code)) },
