@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const { Server } = require('socket.io');
 
 const PORT = process.env.PORT || 3000;
-const MAX_PLAYERS = 6;
+const MAX_PLAYERS = 10;
 const MIN_PLAYERS = 2;
 const HAND_SIZE = 7;
 const COLORS = ['red', 'yellow', 'green', 'blue'];

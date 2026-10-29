@@ -1,6 +1,6 @@
 # UNO Onlayn
 
-Do'stlar bilan 2–6 kishi bo'lib o'ynaladigan onlayn UNO o'yini (Node.js + Express + Socket.IO).
+Do'stlar bilan 2–10 kishi bo'lib o'ynaladigan onlayn UNO o'yini (Node.js + Express + Socket.IO).
 
 ## Ishga tushirish
 

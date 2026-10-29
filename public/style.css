@@ -97,4 +97,9 @@ input { width: 100%; margin-top: 4px; padding: 10px 12px; font-size: 16px; borde
   .card.small-text span { font-size: 12px; }
   #discard .card { width: 70px; height: 105px; font-size: 26px; }
   .hand { gap: 4px; }
+  /* 10 kishigacha raqiblar telefonda ham sig'ishi uchun */
+  .opponents { gap: 6px; }
+  .opponent { min-width: 0; width: calc(33.333% - 6px); padding: 6px; font-size: 13px; }
+  .opponent .cards { height: 24px; }
+  .mini-card { width: 15px; height: 22px; margin-left: -9px; }
 }

@@ -1,7 +1,7 @@
 {
   "name": "uno-online",
   "version": "1.0.0",
-  "description": "Do'stlar bilan onlayn UNO o'yini (2-6 o'yinchi, xona + parol)",
+  "description": "Do'stlar bilan onlayn UNO o'yini (2-10 o'yinchi, xona + parol)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

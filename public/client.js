@@ -145,6 +145,7 @@ function renderLobby() {
   const pw = sessionStorage.getItem(`uno:pw:${state.code}`);
   $('hostPassword').textContent = pw ? `Parol: ${pw}` : '';
   $('playerCount').textContent = state.players.length;
+  $('maxPlayers').textContent = state.maxPlayers;
 
   const list = $('lobbyPlayers');
   list.innerHTML = '';
